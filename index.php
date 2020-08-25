@@ -59,9 +59,9 @@
 
             if (error != "") {
                 
-                $("#error").html('<div class="alert alert-danger" role="alert"><strong>There were error(s) in your form:</strong>' + error + '</div>);
+                $("#error").html('<div class="alert alert-danger" role="alert"><strong>There was an error in your form:</strong>' + error + '</div>');
 
-            }    
+            };    
         });
     </script>
   
