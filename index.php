@@ -13,8 +13,11 @@
   <body>
 
     <div class="container">
+
         <h1>Get in touch!</h1>
     
+        <div id="error"></div>
+
     <form>
         <div class="form-group">
             <label for="exampleFormControlInput1">Email address</label>
@@ -47,13 +50,13 @@
 
             if ($("#subject").val() == "") {
 
-                error += "<p>The Subject field is required</p>";
+                error += "The Subject field is required.<br>";
 
             }
 
-            if ($("#content").val() =="") {
+            if ($("#content").val() == "") {
                 
-                error += "<p>The Content field is required</p>";
+                error += "The Content field is required.<br>";
 
             }
 
@@ -63,6 +66,7 @@
 
             };    
         });
+
     </script>
   
     </body>
