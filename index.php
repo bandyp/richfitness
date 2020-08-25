@@ -35,7 +35,7 @@
 
         } else {
 
-            $emailTo = "bandyptest@gmail.com";
+            $emailTo = "andyphillipslondon@gmail.com";
 
             $subject = $_POST['subject'];
 
