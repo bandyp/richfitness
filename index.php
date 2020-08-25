@@ -1,3 +1,9 @@
+<?php
+
+    print_r($_POST)
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -18,19 +24,19 @@
     
         <div id="error"></div>
 
-    <form>
+    <form method="post">
         <div class="form-group">
             <label for="exampleFormControlInput1">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter your email address">
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address">
             <small class="text-muted">We'll never share your email with anyone else.</small>
         </div>
         <div class="form-group">
             <label for="subject">Subject</label>
-            <input type="text" class="form-control" id="subject">
+            <input type="text" class="form-control" name="subject" id="subject">
         </div>
         <div class="form-group">
             <label for="content">How can i help?</label>
-            <textarea class="form-control" id="content" rows="3"></textarea>
+            <textarea class="form-control" id="content" name="content" rows="3"></textarea>
         </div>
         <button type="submit" id="submit" class="btn btn-primary">Submit</button>
     </form>
@@ -48,6 +54,12 @@
 
             var error = "";
 
+            if ($("#email").val() == "") {
+
+                error += "The Email field is required.<br>";
+
+            }
+
             if ($("#subject").val() == "") {
 
                 error += "The Subject field is required.<br>";
@@ -62,7 +74,11 @@
 
             if (error != "") {
                 
-                $("#error").html('<div class="alert alert-danger" role="alert"><strong>There was an error in your form:</strong>' + error + '</div>');
+                $("#error").html('<div class="alert alert-danger" role="alert"><p><strong>There was an error in your form:</strong></p>' + error + '</div>');
+
+            } else {
+
+                $("form").unbind('submit').submit();
 
             };    
         });
