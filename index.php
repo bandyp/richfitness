@@ -1,6 +1,41 @@
 <?php
 
-    print_r($_POST)
+    $error = "";
+
+    if ($_POST) {
+
+        if (!$_POST["email"]) {
+
+            $error .= "An email address is required.<br>";
+
+        }
+
+                if (!$_POST["content"]) {
+
+            $error .= "The content field is required.<br>";
+
+        }
+
+                if (!$_POST["subject"]) {
+
+            $error .= " The subject field is required.<br>";
+
+        }
+
+        if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL) === false) {
+
+            $error .= "The email address is invalid.<br>";
+
+        }
+
+
+        if ($error != "") {
+                
+                $error = '<div class="alert alert-danger" role="alert"><p><strong>There was an error in your form:</strong></p>' . $error . '</div>';
+
+        }
+
+    }
 
 ?>
 
@@ -22,7 +57,7 @@
 
         <h1>Get in touch!</h1>
     
-        <div id="error"></div>
+        <div id="error"><? echo $error; ?></div>
 
     <form method="post">
         <div class="form-group">
@@ -47,43 +82,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     
-    <script type="text/javascript">
-
-        $("form").submit(function (e) {
-            e.preventDefault(); // this will prevent from submitting the form.
-
-            var error = "";
-
-            if ($("#email").val() == "") {
-
-                error += "The Email field is required.<br>";
-
-            }
-
-            if ($("#subject").val() == "") {
-
-                error += "The Subject field is required.<br>";
-
-            }
-
-            if ($("#content").val() == "") {
-                
-                error += "The Content field is required.<br>";
-
-            }
-
-            if (error != "") {
-                
-                $("#error").html('<div class="alert alert-danger" role="alert"><p><strong>There was an error in your form:</strong></p>' + error + '</div>');
-
-            } else {
-
-                $("form").unbind('submit').submit();
-
-            };    
-        });
-
-    </script>
+   
   
     </body>
 </html>
