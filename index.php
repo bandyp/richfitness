@@ -81,7 +81,7 @@
 
     <form method="post">
         <div class="form-group">
-            <label for="exampleFormControlInput1">Email address</label>
+            <label for="email">Email address</label>
             <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address">
             <small class="text-muted">We'll never share your email with anyone else.</small>
         </div>
