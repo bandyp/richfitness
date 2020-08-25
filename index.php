@@ -1,6 +1,6 @@
 <?php
 
-    $error = "";
+    $error = ""; $successMessage = "";
 
     if ($_POST) {
 
@@ -33,6 +33,26 @@
                 
                 $error = '<div class="alert alert-danger" role="alert"><p><strong>There was an error in your form:</strong></p>' . $error . '</div>';
 
+        } else {
+
+            $emailTo = "bandyptest@gmail.com";
+
+            $subject = $_POST['subject'];
+
+            $content = $_POST['content'];
+
+            $headers = "From: ".$_POST['email'];
+
+            if (mail($emailTo, $subject, $content, $headers)) {
+
+                $successMessage = '<div class="alert alert-success" role="alert">Your message was sent, we will get back to you soon!</div>';
+
+            } else {
+
+                $error = '<div class="alert alert-danger" role="alert"<p><strong>Your meassage could not be sent - please try again later</strong></p></div>'
+
+            }
+
         }
 
     }
@@ -57,7 +77,7 @@
 
         <h1>Get in touch!</h1>
     
-        <div id="error"><? echo $error; ?></div>
+        <div id="error"><? echo $error.$successMessage; ?></div>
 
     <form method="post">
         <div class="form-group">
@@ -82,7 +102,43 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     
-   
+    <script type="text/javascript">
+
+        $("form").submit(function (e) {
+            e.preventDefault(); // this will prevent from submitting the form.
+
+            var error = "";
+
+            if ($("#email").val() == "") {
+
+                error += "The Email field is required.<br>";
+
+            }
+
+            if ($("#subject").val() == "") {
+
+                error += "The Subject field is required.<br>";
+
+            }
+
+            if ($("#content").val() == "") {
+                
+                error += "The Content field is required.<br>";
+
+            }
+
+            if (error != "") {
+                
+                $("#error").html('<div class="alert alert-danger" role="alert"><p><strong>There was an error in your form:</strong></p>' + error + '</div>');
+
+            } else {
+
+                $("form").unbind('submit').submit();
+
+            };    
+        });
+
+    </script>   
   
     </body>
 </html>
