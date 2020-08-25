@@ -78,7 +78,9 @@
             <p class="lead"></p>
         </div>
     </div>
-
+    <div>
+        <img src="rich1.jpg" class="img-fluid" alt="Responsive image">
+    </div>
 
     <div class="container">
 
