@@ -49,7 +49,7 @@
 
             } else {
 
-                $error = '<div class="alert alert-danger" role="alert"<p><strong>Your meassage could not be sent - please try again later</strong></p></div>'
+                $error = '<div class="alert alert-danger" role="alert"<p><strong>Your meassage could not be sent - please try again later</strong></p></div>';
 
             }
 
