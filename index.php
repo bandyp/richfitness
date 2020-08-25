@@ -41,7 +41,7 @@
 
             $content = $_POST['content'];
 
-            $headers = "From: ".$_POST['email'];
+            $headers = "From: me@mydomain.com";
 
             if (mail($emailTo, $subject, $content, $headers)) {
 
